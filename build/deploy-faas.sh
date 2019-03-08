@@ -10,8 +10,8 @@ SUB_FOLDER='2.6'
 mkdir $SUB_FOLDER
 rm -rf *.js *.css *.map static
 rm -rf $SUB_FOLDER/**
-cp -rf ../../examples/element-ui/** .
-cp -rf ../../examples/element-ui/** $SUB_FOLDER/
+cp -rf ../../examples/brizzly-ui/** .
+cp -rf ../../examples/brizzly-ui/** $SUB_FOLDER/
 cd ../..
 
 # deploy domestic site

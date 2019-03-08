@@ -12,12 +12,12 @@ lib
 .idea
 .vscode
 .history
-examples/element-ui
+examples/brizzly-ui
 examples/pages/en-US
 examples/pages/zh-CN
 examples/pages/es
 examples/pages/fr-FR
-fe.element/element-ui
+fe.element/brizzly-ui
 .npmrc
 coverage
 waiter.config.js

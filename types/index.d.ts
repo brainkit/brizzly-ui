@@ -1,4 +1,4 @@
-export * from './element-ui'
+export * from './brizzly-ui'
 
-import * as ElementUI from './element-ui'
+import * as ElementUI from './brizzly-ui'
 export default ElementUI

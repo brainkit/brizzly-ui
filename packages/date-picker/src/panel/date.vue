@@ -161,10 +161,10 @@
     extractTimeFormat,
     timeWithinRange
   } from '../util';
-  import Clickoutside from 'element-ui/src/utils/clickoutside';
-  import Locale from 'element-ui/src/mixins/locale';
-  import ElInput from 'element-ui/packages/input';
-  import ElButton from 'element-ui/packages/button';
+  import Clickoutside from 'brizzly-ui/src/utils/clickoutside';
+  import Locale from 'brizzly-ui/src/mixins/locale';
+  import ElInput from 'brizzly-ui/packages/input';
+  import ElButton from 'brizzly-ui/packages/button';
   import TimePicker from './time';
   import YearTable from '../basic/year-table';
   import MonthTable from '../basic/month-table';
