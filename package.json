@@ -1,5 +1,5 @@
 {
-  "name": "element-ui",
+  "name": "brizzly-ui",
   "version": "2.6.1",
   "description": "A Component Library for Vue.js.",
   "main": "lib/element-ui.common.js",
@@ -29,12 +29,12 @@
   },
   "faas": [
     {
-      "domain": "element",
-      "public": "temp_web/element"
+      "domain": "brizzly",
+      "public": "temp_web/brizzly"
     },
     {
-      "domain": "element-theme",
-      "public": "examples/element-ui",
+      "domain": "brizzly-theme",
+      "public": "examples/brizzly-ui",
       "build": [
         "yarn",
         "npm run deploy:build"
@@ -43,17 +43,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:ElemeFE/element.git"
+    "url": "git+ssh://git@github.com/brainkit/brizzly-ui.git"
   },
-  "homepage": "http://element.eleme.io",
+  "homepage": "https://github.com/brainkit/brizzly-ui",
   "keywords": [
-    "eleme",
+    "brizzly",
     "vue",
     "components"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ElemeFE/element/issues"
+    "url": "https://github.com/brainkit/brizzly-ui/issues"
   },
   "unpkg": "lib/index.js",
   "style": "lib/theme-chalk/index.css",
@@ -98,7 +98,7 @@
     "file-save": "^0.2.0",
     "gulp": "^3.9.1",
     "gulp-autoprefixer": "^4.0.0",
-    "gulp-cssmin": "^0.1.7",
+    "gulp-cssmin": "^0.2.0",
     "gulp-sass": "^4.0.2",
     "highlight.js": "^9.3.0",
     "html-webpack-plugin": "^3.2.0",
@@ -142,5 +142,11 @@
     "webpack-cli": "^3.0.8",
     "webpack-dev-server": "^3.1.11",
     "webpack-node-externals": "^1.7.2"
-  }
+  },
+  "directories": {
+    "example": "examples",
+    "lib": "lib",
+    "test": "test"
+  },
+  "author": "Sergey Lebedev"
 }
