@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://cdn.rawgit.com/ElemeFE/element/dev/element_logo.svg">
+  It`s fork Element UI for develop custom components  
 </p>
 
 <p align="center">
