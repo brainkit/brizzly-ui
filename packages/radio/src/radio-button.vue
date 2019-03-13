@@ -3,19 +3,19 @@
     class="el-radio-button"
     :class="[
       size ? 'el-radio-button--' + size : '',
-      { 'is-active': value === label },
+      { 'is-active': (value === label || value === valueModel)},
       { 'is-disabled': isDisabled },
       { 'is-focus': focus }
     ]"
     role="radio"
-    :aria-checked="value === label"
+    :aria-checked="(value === label || value === valueModel)"
     :aria-disabled="isDisabled"
     :tabindex="tabIndex"
     @keydown.space.stop.prevent="value = isDisabled ? value : label"
   >
     <input
       class="el-radio-button__orig-radio"
-      :value="label"
+      :value="!(typeof valueModel !== 'undefined') ? label : valueModel"
       type="radio"
       v-model="value"
       :name="name"
@@ -53,6 +53,7 @@
 
     props: {
       label: {},
+      valueModel: {},
       disabled: Boolean,
       name: String
     },

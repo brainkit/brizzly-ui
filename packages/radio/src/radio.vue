@@ -6,24 +6,24 @@
       { 'is-disabled': isDisabled },
       { 'is-focus': focus },
       { 'is-bordered': border },
-      { 'is-checked': model === label }
+      { 'is-checked': (model === label || model === valueModel) }
     ]"
     role="radio"
-    :aria-checked="model === label"
+    :aria-checked="(model === label || model === valueModel)"
     :aria-disabled="isDisabled"
     :tabindex="tabIndex"
-    @keydown.space.stop.prevent="model = isDisabled ? model : label"
+    @keydown.space.stop.prevent="model = isDisabled ? model : label || valueModel"
   >
     <span class="el-radio__input"
       :class="{
         'is-disabled': isDisabled,
-        'is-checked': model === label
+        'is-checked': (model === label || model === valueModel)
       }"
     >
       <span class="el-radio__inner"></span>
       <input
         class="el-radio__original"
-        :value="label"
+        :value="!(typeof valueModel !== 'undefined') ? label : valueModel"
         type="radio"
         aria-hidden="true"
         v-model="model"
@@ -63,6 +63,7 @@
 
     props: {
       value: {},
+      valueModel: {},
       label: {},
       disabled: Boolean,
       name: String,
