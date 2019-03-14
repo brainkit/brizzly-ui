@@ -20,7 +20,8 @@
         'is-checked': model === label
       }"
     >
-      <span class="el-radio__inner"></span>
+      <span class="el-radio__inner"
+            :style="{'border-color': radioColor, 'background-color': radioColor}"></span>
       <input
         class="el-radio__original"
         :value="label"
@@ -67,7 +68,8 @@
       disabled: Boolean,
       name: String,
       border: Boolean,
-      size: String
+      size: String,
+      radioColor: String
     },
 
     data() {
