@@ -1,6 +1,6 @@
 {
   "name": "brizzly-ui",
-  "version": "2.6.5",
+  "version": "2.6.6",
   "description": "A Component Library for Vue.js.",
   "main": "lib/brizzly-ui.common.js",
   "files": [

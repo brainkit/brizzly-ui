@@ -176,7 +176,7 @@ Radio with button styles.
  Attribute      | Description          | Type      | Accepted Values       | Default
 ---- | ---- | ---- | ---- | ----
 value / v-model | binding value | string / number / boolean | — | —
-label | the value of Radio | string / number / boolean | — | —
+label / value-model | the value of Radio | string / number / boolean | — | —
 disabled | whether Radio is disabled | boolean | — | false
 border  | whether to add a border around Radio  | boolean   | — | false
 size  | size of the Radio, only works when `border` is true  | string  | medium / small / mini | —
@@ -208,6 +208,6 @@ fill  | border and background color when button is active | string   | — | #40
 
  Attribute      | Description          | Type      | Accepted Values       | Default
 ---- | ---- | ---- | ---- | ----
-label | the value of radio | string / number | — | —
+label / value-model | the value of radio | string / number | — | —
 disabled | whether radio is disabled | boolean | — | false
 name | native 'name' attribute | string    |      —         |     —
