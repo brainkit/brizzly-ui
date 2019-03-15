@@ -21,7 +21,8 @@
       }"
     >
       <span class="el-radio__inner"
-            :style="{'border-color': radioColor, 'background-color': radioColor}"></span>
+            :style="{'border-color': model === label || model === valueModel? radioActiveColor : radioInactiveColor,
+                     'color': model === label || model === valueModel? radioActiveColor : 'transparent'}"></span>
       <input
         class="el-radio__original"
         :value="!(typeof valueModel !== 'undefined') ? label : valueModel"
@@ -70,7 +71,8 @@
       name: String,
       border: Boolean,
       size: String,
-      radioColor: String
+      radioInactiveColor: String,
+      radioActiveColor: String
     },
 
     data() {

@@ -127,7 +127,8 @@
     @include when(checked) {
       .el-radio__inner {
         border-color: $--radio-checked-input-border-color;
-        background: $--radio-checked-icon-color;
+        color: $--radio-checked-input-border-color;
+        background: transparent;
 
         &::after {
           transform: translate(-50%, -50%) scale(1);
@@ -155,6 +156,7 @@
     cursor: pointer;
     display: inline-block;
     box-sizing: border-box;
+    color: transparent;
 
     &:hover {
       border-color: $--radio-input-border-color-hover;
@@ -164,7 +166,7 @@
       width: 4px;
       height: 4px;
       border-radius: $--radio-input-border-radius;
-      background-color: $--color-white;
+      background-color: currentColor;
       content: "";
       position: absolute;
       left: 50%;

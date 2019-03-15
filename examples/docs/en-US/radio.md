@@ -11,6 +11,7 @@ Radio should not have too many options. Otherwise, use the Select component inst
 <template>
   <el-radio v-model="radio" label="1">Option A</el-radio>
   <el-radio v-model="radio" label="2">Option B</el-radio>
+  <el-radio v-model="radio" label="3" radio-inactive-color="#bbb" radio-active-color="red">Option C</el-radio>
 </template>
 
 <script>
