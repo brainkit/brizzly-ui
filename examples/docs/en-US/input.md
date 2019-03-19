@@ -30,6 +30,25 @@ export default {
 ```
 :::
 
+### Floating label
+
+:::demo
+
+```html
+<el-input placeholder="Please input" v-model="input" floating-label="Floating label"></el-input>
+
+<script>
+export default {
+  data() {
+    return {
+      input: ''
+    }
+  }
+}
+</script>
+```
+:::
+
 ### Disabled
 
 :::demo Disable the Input with the `disabled` attribute.

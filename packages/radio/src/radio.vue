@@ -6,7 +6,8 @@
       { 'is-disabled': isDisabled },
       { 'is-focus': focus },
       { 'is-bordered': border },
-      { 'is-checked': (model === label || model === valueModel) }
+      { 'is-checked': (model === label || model === valueModel) },
+      { customClass : customClass }
     ]"
     role="radio"
     :aria-checked="(model === label || model === valueModel)"

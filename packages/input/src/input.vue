@@ -16,6 +16,7 @@
   >
     <template v-if="type !== 'textarea'">
       <!-- 前置元素 -->
+      <label class="floating-label" v-if="floatingLabel" :class="{'label-focused': focused || nativeInputValue}">{{floatingLabel}}</label>
       <div class="el-input-group__prepend" v-if="$slots.prepend">
         <slot name="prepend"></slot>
       </div>
@@ -154,6 +155,7 @@
         type: String,
         default: 'off'
       },
+      floatingLabel: '',
       /** @Deprecated in next major version */
       autoComplete: {
         type: String,

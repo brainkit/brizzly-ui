@@ -16,6 +16,7 @@ import { ElCascader } from './cascader'
 import { ElCheckbox } from './checkbox'
 import { ElCheckboxButton } from './checkbox-button'
 import { ElCheckboxGroup } from './checkbox-group'
+import { ElCheckboxTag } from './checkbox-tag'
 import { ElCol } from './col'
 import { ElCollapse } from './collapse'
 import { ElCollapseItem } from './collapse-item'
@@ -153,6 +154,9 @@ export class CheckboxButton extends ElCheckboxButton {}
 
 /** Checkbox Group Component */
 export class CheckboxGroup extends ElCheckboxGroup {}
+
+/** Checkbox Tag Component */
+export class CheckboxTag extends ElCheckboxTag {}
 
 /** Colunm Layout Component */
 export class Col extends ElCol {}

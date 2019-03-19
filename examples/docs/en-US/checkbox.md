@@ -194,6 +194,52 @@ Checkbox with button styles.
 ```
 :::
 
+### Tags style
+
+Checkbox with tag styles.
+
+:::demo You just need to change `el-checkbox` element into `el-checkbox-tag` element. We also provide `size` attribute.
+```html
+<template>
+  <div>
+    <el-checkbox-group v-model="checkboxGroup1">
+      <el-checkbox-tag v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox-tag>
+    </el-checkbox-group>
+  </div>
+  <div style="margin-top: 20px">
+    <el-checkbox-group v-model="checkboxGroup2" size="medium">
+      <el-checkbox-tag v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox-tag>
+    </el-checkbox-group>
+  </div>
+  <div style="margin-top: 20px">
+    <el-checkbox-group v-model="checkboxGroup3" size="small">
+      <el-checkbox-tag v-for="city in cities" :label="city" :disabled="city === 'Beijing'" :key="city">{{city}}</el-checkbox-tag>
+    </el-checkbox-group>
+  </div>
+  <div style="margin-top: 20px">
+    <el-checkbox-group v-model="checkboxGroup4" size="mini" disabled>
+      <el-checkbox-tag v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox-tag>
+    </el-checkbox-group>
+  </div>
+</template>
+<script>
+  const cityOptions = ['Shanghai', 'Beijing', 'Guangzhou', 'Shenzhen'];
+
+  export default {
+    data () {
+      return {
+        checkboxGroup1: ['Shanghai'],
+        checkboxGroup2: ['Shanghai'],
+        checkboxGroup3: ['Shanghai'],
+        checkboxGroup4: ['Shanghai'],
+        cities: cityOptions
+      };
+    }
+  }
+</script>
+```
+:::
+
 ### With borders
 
 :::demo The `border` attribute adds a border to Checkboxes.
