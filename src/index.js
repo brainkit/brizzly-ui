@@ -15,9 +15,11 @@ import InputNumber from '../packages/input-number/index.js';
 import Radio from '../packages/radio/index.js';
 import RadioGroup from '../packages/radio-group/index.js';
 import RadioButton from '../packages/radio-button/index.js';
+import RadioTag from '../packages/radio-tag/index.js';
 import Checkbox from '../packages/checkbox/index.js';
 import CheckboxButton from '../packages/checkbox-button/index.js';
 import CheckboxGroup from '../packages/checkbox-group/index.js';
+import CheckboxTag from '../packages/checkbox-tag/index.js';
 import Switch from '../packages/switch/index.js';
 import Select from '../packages/select/index.js';
 import Option from '../packages/option/index.js';
@@ -90,9 +92,11 @@ const components = [
   Radio,
   RadioGroup,
   RadioButton,
+  RadioTag,
   Checkbox,
   CheckboxButton,
   CheckboxGroup,
+  CheckboxTag,
   Switch,
   Select,
   Option,
@@ -197,9 +201,11 @@ export default {
   Radio,
   RadioGroup,
   RadioButton,
+  RadioTag,
   Checkbox,
   CheckboxButton,
   CheckboxGroup,
+  CheckboxTag,
   Switch,
   Select,
   Option,
