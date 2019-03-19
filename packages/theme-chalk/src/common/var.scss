@@ -262,6 +262,16 @@ $--radio-button-checked-font-color: $--color-white !default;
 $--radio-button-checked-border-color: $--color-primary !default;
 $--radio-button-disabled-checked-fill: $--border-color-extra-light !default;
 
+/// fontSize|[]|Font|1
+$--radio-tag-font-size: $--font-size-base !default;
+/// color|[]|Color|0
+$--radio-tag-checked-background-color: $--color-primary !default;
+/// color|[]|Color|0
+$--radio-tag-checked-font-color: $--color-white !default;
+/// color|[]|Color|0
+$--radio-tag-checked-border-color: $--color-primary !default;
+$--radio-tag-disabled-checked-fill: $--border-color-extra-light !default;
+
 /* Select
 -------------------------- */
 $--select-border-color-hover: $--border-color-hover !default;

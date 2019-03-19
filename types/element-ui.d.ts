@@ -49,6 +49,7 @@ import { ElProgress } from './progress'
 import { ElRate } from './rate'
 import { ElRadio } from './radio'
 import { ElRadioButton } from './radio-button'
+import { ElRadioTag } from './radio-tag'
 import { ElRadioGroup } from './radio-group'
 import { ElRow } from './row'
 import { ElSelect } from './select'
@@ -241,6 +242,9 @@ export class Radio extends ElRadio {}
 
 /** Radio Button Component */
 export class RadioButton extends ElRadioButton {}
+
+/** Radio Tag Component */
+export class RadioTag extends ElRadioTag {}
 
 /** Radio Group Component */
 export class RadioGroup extends ElRadioGroup {}

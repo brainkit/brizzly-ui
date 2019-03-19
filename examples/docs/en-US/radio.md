@@ -130,6 +130,61 @@ Radio with button styles.
 ```
 :::
 
+### Tag style
+
+Radio with tag styles.
+
+:::demo You just need to change `el-radio` element into `el-radio-tag` element. We also provide `size` attribute.
+```html
+<template>
+  <div>
+    <el-radio-group v-model="radio31">
+      <el-radio-tag label="New York"></el-radio-tag>
+      <el-radio-tag label="Washington"></el-radio-tag>
+      <el-radio-tag label="Los Angeles"></el-radio-tag>
+      <el-radio-tag label="Chicago"></el-radio-tag>
+    </el-radio-group>
+  </div>
+  <div style="margin-top: 20px">
+    <el-radio-group v-model="radio41" size="medium">
+      <el-radio-tag label="New York" ></el-radio-tag>
+      <el-radio-tag label="Washington"></el-radio-tag>
+      <el-radio-tag label="Los Angeles"></el-radio-tag>
+      <el-radio-tag label="Chicago"></el-radio-tag>
+    </el-radio-group>
+  </div>
+  <div style="margin-top: 20px">
+    <el-radio-group v-model="radio51" size="small">
+      <el-radio-tag label="New York"></el-radio-tag>
+      <el-radio-tag label="Washington" disabled ></el-radio-tag>
+      <el-radio-tag label="Los Angeles"></el-radio-tag>
+      <el-radio-tag label="Chicago"></el-radio-tag>
+    </el-radio-group>
+  </div>
+  <div style="margin-top: 20px">
+    <el-radio-group v-model="radio61" disabled size="mini">
+      <el-radio-tag label="New York"></el-radio-tag>
+      <el-radio-tag label="Washington"></el-radio-tag>
+      <el-radio-tag label="Los Angeles"></el-radio-tag>
+      <el-radio-tag label="Chicago"></el-radio-tag>
+    </el-radio-group>
+  </div>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+        radio31: 'New York',
+        radio41: 'New York',
+        radio51: 'New York',
+        radio61: 'New York'
+      };
+    }
+  }
+</script>
+```
+:::
 ### With borders
 
 :::demo The `border` attribute adds a border to Radios.
