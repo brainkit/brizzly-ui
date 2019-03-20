@@ -107,6 +107,7 @@
     methods: {
       handleChange() {
         this.$nextTick(() => {
+          this.$emit('change', this.model);
           this.dispatch('ElRadioGroup', 'handleChange', this.value);
         });
       }
