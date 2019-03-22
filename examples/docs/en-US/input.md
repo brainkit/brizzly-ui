@@ -49,6 +49,25 @@ export default {
 ```
 :::
 
+### Floating label with no border input
+
+:::demo
+
+```html
+<el-input placeholder="Please input" v-model="input" floating-label="Floating label" no-border="true" floating-padding="5px"></el-input>
+
+<script>
+export default {
+  data() {
+    return {
+      input: ''
+    }
+  }
+}
+</script>
+```
+:::
+
 ### Disabled
 
 :::demo Disable the Input with the `disabled` attribute.

@@ -357,6 +357,7 @@
 @include b(checkbox-tag) {
   position: relative;
   display: inline-block;
+  margin-bottom: 10px;
 
   @include e(inner) {
     display: inline-block;
@@ -392,9 +393,9 @@
       }
     }
   }
-  & + .el-checkbox-tag {
-    @include e(inner) {
-      margin-left: 10px;
+  &:not(:last-child) {
+    .el-checkbox-tag__inner {
+      margin-right: 10px;
     }
   }
 

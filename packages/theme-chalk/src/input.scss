@@ -217,6 +217,44 @@
       line-height: $--input-mini-height;
     }
   }
+
+  @include m(floating) {
+    .floating-label {
+      position: absolute;
+      left: 16px;
+      top: 20px;
+      line-height: 40px;
+      transform-origin: top left;
+      transform: translate(0);
+      font-size: 14px;
+      color: $--color-text-placeholder;
+      transition: all .65s cubic-bezier(.23,1,.32,1),display 0s 0s;
+      cursor: pointer;
+
+      &.label-focused {
+        transform: translateY(-100%);
+      }
+    }
+    input {
+      margin-top: 20px;
+
+      &::placeholder {
+        opacity: 0;
+      }
+    }
+  }
+  @include m(no-border) {
+    .el-input__inner {
+      height: auto;
+      line-height: 20px;
+      border: 0;
+      padding-left: 0;
+    }
+    .floating-label {
+      left: 0;
+      line-height: 20px;
+    }
+  }
 }
 
 @include b(input-group) {
@@ -300,6 +338,7 @@
       border-color: transparent;
     }
   }
+
 }
 
 /** disalbe default clear on IE */
@@ -308,25 +347,5 @@
   width: 0;
   height: 0;
 }
-.floating-label {
-  position: absolute;
-  left: 16px;
-  top: 20px;
-  line-height: 40px;
-  transform-origin: top left;
-  transform: translate(0);
-  font-size: 14px;
-  color: $--color-text-placeholder;
-  transition: all .65s cubic-bezier(.23,1,.32,1),display 0s 0s;
 
-  & ~ input {
-    margin-top: 20px;
 
-    &::placeholder {
-      opacity: 0;
-    }
-  }
-  &.label-focused {
-    transform: translateY(-100%);
-  }
-}

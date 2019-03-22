@@ -8,7 +8,9 @@
       'el-input-group--append': $slots.append,
       'el-input-group--prepend': $slots.prepend,
       'el-input--prefix': $slots.prefix || prefixIcon,
-      'el-input--suffix': $slots.suffix || suffixIcon || clearable || showPassword
+      'el-input--suffix': $slots.suffix || suffixIcon || clearable || showPassword,
+      'el-input--floating': floatingLabel,
+      'el-input--no-border': noBorder
     }
     ]"
     @mouseenter="hovering = true"
@@ -16,7 +18,7 @@
   >
     <template v-if="type !== 'textarea'">
       <!-- 前置元素 -->
-      <label class="floating-label" v-if="floatingLabel" :class="{'label-focused': focused || nativeInputValue}">{{floatingLabel}}</label>
+      
       <div class="el-input-group__prepend" v-if="$slots.prepend">
         <slot name="prepend"></slot>
       </div>
@@ -39,7 +41,14 @@
         @blur="handleBlur"
         @change="handleChange"
         :aria-label="label"
+        :id="'input-' + id"
       >
+      <label class="floating-label"
+             :for="'input-' + id"
+             v-if="floatingLabel"
+             :class="{'label-focused': focused || nativeInputValue}"
+             :style="[focused || nativeInputValue ? {'margin-top':  '-' + floatingPadding} : {}]"
+      >{{floatingLabel}}</label>
       <!-- 前置内容 -->
       <span class="el-input__prefix" v-if="$slots.prefix || prefixIcon">
         <slot name="prefix"></slot>
@@ -156,6 +165,11 @@
         default: 'off'
       },
       floatingLabel: '',
+      floatingPadding: {
+        type: String,
+        default: ''
+      },
+      noBorder: false,
       /** @Deprecated in next major version */
       autoComplete: {
         type: String,
@@ -180,7 +194,8 @@
         type: Boolean,
         default: false
       },
-      tabindex: String
+      tabindex: String,
+      id: null
     },
 
     computed: {
@@ -359,6 +374,7 @@
     mounted() {
       this.resizeTextarea();
       this.updateIconOffset();
+      this.id = this._uid;
     },
 
     updated() {

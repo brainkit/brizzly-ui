@@ -143,6 +143,12 @@ Radio with tag styles.
       <el-radio-tag label="Washington"></el-radio-tag>
       <el-radio-tag label="Los Angeles"></el-radio-tag>
       <el-radio-tag label="Chicago"></el-radio-tag>
+      <el-radio-tag label="Chicago"></el-radio-tag>
+      <el-radio-tag label="Chicago"></el-radio-tag>
+      <el-radio-tag label="Chicago"></el-radio-tag>
+      <el-radio-tag label="Chicago"></el-radio-tag>
+      <el-radio-tag label="Chicago"></el-radio-tag>
+      <el-radio-tag label="Chicago"></el-radio-tag>
     </el-radio-group>
   </div>
   <div style="margin-top: 20px">

@@ -203,6 +203,7 @@
   position: relative;
   display: inline-block;
   outline: none;
+  margin-bottom: 10px;
 
   @include e(inner) {
     display: inline-block;
@@ -238,9 +239,9 @@
       }
     }
   }
-  & + .el-radio-tag {
-    @include e(inner) {
-      margin-left: 10px;
+  &:not(:last-child) {
+    .el-radio-tag__inner {
+      margin-right: 10px;
     }
   }
 
