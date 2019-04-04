@@ -115,6 +115,9 @@
       mode() {
         return this.rootMenu.mode;
       },
+      collapse() {
+        return this.rootMenu.collapse;
+      },
       isMenuPopup() {
         return this.rootMenu.isMenuPopup;
       },
@@ -171,12 +174,16 @@
         const { rootMenu, disabled } = this;
         if (
           (rootMenu.menuTrigger === 'hover' && rootMenu.mode === 'horizontal') ||
-          (rootMenu.collapse && rootMenu.mode === 'vertical') ||
+          (rootMenu.collapse && rootMenu.mode === 'vertical') || (rootMenu.mode !== 'vertical-combined') ||
           disabled
         ) {
           return;
         }
-        this.dispatch('ElMenu', 'submenu-click', this);
+        if (rootMenu.mode === 'vertical-combined') {
+          this.$emit('click', this);
+        } else {
+          this.dispatch('ElMenu', 'submenu-click', this);
+        }
       },
       handleMouseenter(event) {
         if (!('ActiveXObject' in window) && event.type === 'focus' && !event.relatedTarget) {
@@ -246,6 +253,8 @@
       this.parentMenu.addSubmenu(this);
       this.rootMenu.addSubmenu(this);
       this.initPopper();
+      // console.log(this.$parent.$options.propsData.collapse);
+      console.log(this.collapse);
     },
     beforeDestroy() {
       this.parentMenu.removeSubmenu(this);
@@ -265,7 +274,8 @@
         disabled,
         popperClass,
         $slots,
-        isFirstLevel
+        isFirstLevel,
+        collapse
       } = this;
 
       const popupMenu = (
@@ -294,6 +304,7 @@
             class="el-menu el-menu--inline"
             v-show={opened}
             style={{ backgroundColor: rootMenu.backgroundColor || '' }}>
+            <li v-show={collapse} class="submenu__title">{$slots.title}</li>
             {$slots.default}
           </ul>
         </el-collapse-transition>
@@ -316,7 +327,7 @@
           aria-haspopup="true"
           aria-expanded={opened}
           on-mouseenter={this.handleMouseenter}
-          on-mouseleave={this.handleMouseleave}
+          on-mouseleave={(active && !collapse) ? '' : this.handleMouseleave}
           on-focus={this.handleMouseenter}
         >
           <div

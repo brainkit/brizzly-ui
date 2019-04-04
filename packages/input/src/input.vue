@@ -141,7 +141,8 @@
         hovering: false,
         focused: false,
         isOnComposition: false,
-        passwordVisible: false
+        passwordVisible: false,
+        id: null
       };
     },
 
@@ -194,8 +195,7 @@
         type: Boolean,
         default: false
       },
-      tabindex: String,
-      id: null
+      tabindex: String
     },
 
     computed: {
