@@ -265,6 +265,9 @@
         }
 
         if (this.router && hasIndex) {
+	        if (this.mode === 'vertical-combined' || this.collapse) {
+		        this.openedMenus = [];
+	        }
           this.routeToItem(item, (error) => {
             this.activeIndex = oldActiveIndex;
             if (error) console.error(error);

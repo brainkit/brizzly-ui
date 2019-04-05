@@ -173,9 +173,9 @@
       handleClick() {
         const { rootMenu, disabled } = this;
         if (
-          (rootMenu.menuTrigger === 'hover' && rootMenu.mode === 'horizontal') ||
-          (rootMenu.collapse && rootMenu.mode === 'vertical') || (rootMenu.mode !== 'vertical-combined') ||
-          disabled
+          ((rootMenu.menuTrigger === 'hover' && rootMenu.mode === 'horizontal') ||
+          (rootMenu.collapse && rootMenu.mode === 'vertical') ||
+          disabled) && (rootMenu.mode !== 'vertical-combined')
         ) {
           return;
         }
@@ -253,8 +253,6 @@
       this.parentMenu.addSubmenu(this);
       this.rootMenu.addSubmenu(this);
       this.initPopper();
-      // console.log(this.$parent.$options.propsData.collapse);
-      console.log(this.collapse);
     },
     beforeDestroy() {
       this.parentMenu.removeSubmenu(this);

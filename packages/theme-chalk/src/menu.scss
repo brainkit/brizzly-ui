@@ -177,6 +177,7 @@
 
       & .el-menu {
        @include utils-dropdown;
+        background-color: #fff;
       }
 
       &.is-opened {
@@ -207,6 +208,7 @@
         & > .el-menu__name {
           @include utils-dropdown;
           cursor: initial;
+          background-color: #fff;
 
           span {
             width: auto;

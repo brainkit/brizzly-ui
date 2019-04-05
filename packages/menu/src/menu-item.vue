@@ -23,10 +23,15 @@
       </div>
     </el-tooltip>
     <template v-else>
-      <slot></slot>
-      <div v-if="(mode !== 'vertical-combined' && rootMenu.collapse) || !rootMenu.collapse" class="el-menu__name"><slot name="title"></slot></div>
+      <slot v-if="(mode !== 'vertical-combined' && rootMenu.collapse) || !rootMenu.collapse || !isNested"></slot>
+      <div v-if="(mode !== 'vertical-combined' && rootMenu.collapse) || !rootMenu.collapse" class="el-menu__name">
+        <slot name="title"></slot>
+      </div>
 	    <el-collapse-transition v-else>
-		    <div class="el-menu__name" v-show="itemOpened"><slot name="title"></slot></div>
+		    <div class="el-menu__name" v-show="(itemOpened && !isNested) || isNested">
+          <slot v-if="isNested && (mode === 'vertical-combined')"></slot>
+          <slot name="title"></slot>
+        </div>
 	    </el-collapse-transition>
     </template>
   </li>
