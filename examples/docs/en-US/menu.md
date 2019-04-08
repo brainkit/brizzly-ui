@@ -246,6 +246,8 @@ Vertical NavMenu could be collapsed.
 
 vertical-combined NavMenu.
 
+
+<!-- TODO: Доработать, чтобы работало с group и больше чем 2 уровня меню -->
 :::demo
 ```html
 <el-radio-group v-model="isCollapse" style="margin-bottom: 20px;">
@@ -258,16 +260,14 @@ vertical-combined NavMenu.
       <i class="el-icon-location"></i>
       <span slot="title">Navigator One</span>
     </template>
-    <el-menu-item-group>
-      <span slot="title">Group One</span>
-      <el-menu-item index="1-1">item one</el-menu-item>
-      <el-menu-item index="1-2">item two</el-menu-item>
-    </el-menu-item-group>
+    <el-menu-item index="1-1">item one</el-menu-item>
+    <el-menu-item index="1-2">item two</el-menu-item>
     <el-menu-item index="1-3">item three</el-menu-item>
-    <el-submenu index="1-4">
-      <span slot="title">item four</span>
-      <el-menu-item index="1-4-1">item one</el-menu-item>
-    </el-submenu>
+    
+  </el-submenu>
+  <el-submenu index="1-4">
+    <span slot="title">item four</span>
+    <el-menu-item index="1-4-1">item one</el-menu-item>
   </el-submenu>
   <el-menu-item index="2">
     <i class="el-icon-menu"></i>

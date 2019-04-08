@@ -179,11 +179,11 @@
         ) {
           return;
         }
+        this.dispatch('ElMenu', 'submenu-click', this);
         if (rootMenu.mode === 'vertical-combined') {
           this.$emit('click', this);
-        } else {
-          this.dispatch('ElMenu', 'submenu-click', this);
         }
+
       },
       handleMouseenter(event) {
         if (!('ActiveXObject' in window) && event.type === 'focus' && !event.relatedTarget) {

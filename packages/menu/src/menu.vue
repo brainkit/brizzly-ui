@@ -239,15 +239,26 @@
       },
       handleSubmenuClick(submenu) {
         const { index, indexPath } = submenu;
+	      const oldActiveIndex = this.activeIndex;
         let isOpened = this.openedMenus.indexOf(index) !== -1;
-
-        if (isOpened) {
-          this.closeMenu(index);
-          this.$emit('close', index, indexPath);
-        } else {
-          this.openMenu(index, indexPath);
-          this.$emit('open', index, indexPath);
+	      const hasIndex = submenu.index !== null;
+				
+        if (this.mode !== 'vertical-combined') {
+	        if (isOpened) {
+		        this.closeMenu(index);
+		        this.$emit('close', index, indexPath);
+	        } else {
+		        this.openMenu(index, indexPath);
+		        this.$emit('open', index, indexPath);
+	        }
         }
+	      if (this.mode === 'vertical-combined' && this.router && hasIndex) {
+		
+		      this.routeToItem(submenu, (error) => {
+			      this.activeIndex = oldActiveIndex;
+			      if (error) console.error(error);
+		      });
+	      }
       },
       handleItemClick(item) {
         const { index, indexPath } = item;
@@ -263,11 +274,14 @@
         if (this.mode === 'horizontal' || this.collapse) {
           this.openedMenus = [];
         }
-
+	      if (this.mode === 'vertical-combined' || this.collapse) {
+		      this.openedMenus = [];
+		      if (item.$parent && item.$parent.index){
+			      this.openedMenus.push(item.$parent.index);
+		      }
+	      }
         if (this.router && hasIndex) {
-	        if (this.mode === 'vertical-combined' || this.collapse) {
-		        this.openedMenus = [];
-	        }
+	        
           this.routeToItem(item, (error) => {
             this.activeIndex = oldActiveIndex;
             if (error) console.error(error);
