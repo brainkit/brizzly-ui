@@ -253,7 +253,10 @@
 	        }
         }
 	      if (this.mode === 'vertical-combined' && this.router && hasIndex) {
-		
+		      this.openedMenus = [];
+		      if (submenu.$parent && submenu.$parent.index){
+			      this.openedMenus.push(submenu.$parent.index);
+		      }
 		      this.routeToItem(submenu, (error) => {
 			      this.activeIndex = oldActiveIndex;
 			      if (error) console.error(error);
@@ -274,7 +277,7 @@
         if (this.mode === 'horizontal' || this.collapse) {
           this.openedMenus = [];
         }
-	      if (this.mode === 'vertical-combined' || this.collapse) {
+	      if (this.mode === 'vertical-combined') {
 		      this.openedMenus = [];
 		      if (item.$parent && item.$parent.index){
 			      this.openedMenus.push(item.$parent.index);
