@@ -60,7 +60,7 @@ export default {
       return str.indexOf('image') !== -1;
     },
     handleChange(ev) {
-      const files = ev.target.files;
+      let files = ev.target.files;
 
       if (!files) return;
       this.uploadFiles(files);
@@ -88,7 +88,7 @@ export default {
         return this.post(rawFile);
       }
 
-      const before = this.beforeUpload(rawFile);
+      let before = this.beforeUpload(rawFile);
       if (before && before.then) {
         before.then(processedFile => {
           const fileType = Object.prototype.toString.call(processedFile);
@@ -118,7 +118,7 @@ export default {
       }
     },
     abort(file) {
-      const { reqs } = this;
+      let { reqs } = this;
       if (file) {
         let uid = file;
         if (file.uid) uid = file.uid;
@@ -133,8 +133,8 @@ export default {
       }
     },
     post(rawFile) {
-      const { uid } = rawFile;
-      const options = {
+      let { uid } = rawFile;
+      let options = {
         headers: this.headers,
         withCredentials: this.withCredentials,
         file: rawFile,
@@ -153,7 +153,7 @@ export default {
           delete this.reqs[uid];
         }
       };
-      const req = this.httpRequest(options);
+      let req = this.httpRequest(options);
       this.reqs[uid] = req;
       if (req && req.then) {
         req.then(options.onSuccess, options.onError);
@@ -186,7 +186,7 @@ export default {
       disabled,
       handleKeydown
     } = this;
-    const data = {
+    let data = {
       class: {
         'el-upload': true
       },
