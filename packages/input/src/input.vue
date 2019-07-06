@@ -4,6 +4,7 @@
     inputSize ? 'el-input--' + inputSize : '',
     {
       'is-disabled': inputDisabled,
+      'is-exceed': inputExceed,
       'el-input-group': $slots.prepend || $slots.append,
       'el-input-group--append': $slots.append,
       'el-input-group--prepend': $slots.prepend,
@@ -31,11 +32,9 @@
         :disabled="inputDisabled"
         :readonly="readonly"
         :autocomplete="autoComplete || autocomplete"
-        :value="nativeInputValue"
         ref="input"
-        @compositionstart="handleComposition"
-        @compositionupdate="handleComposition"
-        @compositionend="handleComposition"
+        @compositionstart="handleCompositionStart"
+        @compositionend="handleCompositionEnd"
         @input="handleInput"
         @focus="handleFocus"
         @blur="handleBlur"
@@ -60,9 +59,9 @@
       <!-- 后置内容 -->
       <span
         class="el-input__suffix"
-        v-if="$slots.suffix || suffixIcon || showClear || showPassword || validateState && needStatusIcon">
+        v-if="getSuffixVisible()">
         <span class="el-input__suffix-inner">
-          <template v-if="!showClear || !showPwdVisible">
+          <template v-if="!showClear || !showPwdVisible || !isWordLimitVisible">
             <slot name="suffix"></slot>
             <i class="el-input__icon"
               v-if="suffixIcon"
@@ -77,6 +76,11 @@
             class="el-input__icon el-icon-view el-input__clear"
             @click="handlePasswordVisible"
           ></i>
+          <span v-if="isWordLimitVisible" class="el-input__count">
+            <span class="el-input__count-inner">
+              {{ textLength }}/{{ upperLimit }}
+            </span>
+          </span>
         </span>
         <i class="el-input__icon"
           v-if="validateState"
@@ -92,10 +96,8 @@
       v-else
       :tabindex="tabindex"
       class="el-textarea__inner"
-      :value="nativeInputValue"
-      @compositionstart="handleComposition"
-      @compositionupdate="handleComposition"
-      @compositionend="handleComposition"
+      @compositionstart="handleCompositionStart"
+      @compositionend="handleCompositionEnd"
       @input="handleInput"
       ref="textarea"
       v-bind="$attrs"
@@ -109,6 +111,7 @@
       :aria-label="label"
     >
     </textarea>
+    <span v-if="isWordLimitVisible && type === 'textarea'" class="el-input__count">{{ textLength }}/{{ upperLimit }}</span>
   </div>
 </template>
 <script>
@@ -140,9 +143,9 @@
         textareaCalcStyle: {},
         hovering: false,
         focused: false,
-        isOnComposition: false,
         passwordVisible: false,
-        id: null
+        id: null,
+        isComposing: false
       };
     },
 
@@ -195,6 +198,10 @@
         type: Boolean,
         default: false
       },
+      showWordLimit: {
+        type: Boolean,
+        default: false
+      },
       tabindex: String
     },
 
@@ -225,7 +232,7 @@
         return this.disabled || (this.elForm || {}).disabled;
       },
       nativeInputValue() {
-        return this.value === null || this.value === undefined ? '' : this.value;
+        return this.value === null || this.value === undefined ? '' : String(this.value);
       },
       showClear() {
         return this.clearable &&
@@ -239,6 +246,29 @@
           !this.inputDisabled &&
           !this.readonly &&
           (!!this.nativeInputValue || this.focused);
+      },
+      isWordLimitVisible() {
+        return this.showWordLimit &&
+          this.$attrs.maxlength &&
+          (this.type === 'text' || this.type === 'textarea') &&
+          !this.inputDisabled &&
+          !this.readonly &&
+          !this.showPassword;
+      },
+      upperLimit() {
+        return this.$attrs.maxlength;
+      },
+      textLength() {
+        if (typeof this.value === 'number') {
+          return String(this.value).length;
+        }
+
+        return (this.value || '').length;
+      },
+      inputExceed() {
+        // show exceed style if length of initial value greater then maxlength
+        return this.isWordLimitVisible &&
+          (this.textLength > this.upperLimit);
       }
     },
 
@@ -248,6 +278,22 @@
         if (this.validateEvent) {
           this.dispatch('ElFormItem', 'el.form.change', [val]);
         }
+      },
+      // native input value is set explicitly
+      // do not use v-model / :value in template
+      // see: https://github.com/ElemeFE/element/issues/14521
+      nativeInputValue() {
+        this.setNativeInputValue();
+      },
+      // when change between <input> and <textarea>,
+      // update DOM dependent value and styles
+      // https://github.com/ElemeFE/element/issues/14857
+      type() {
+        this.$nextTick(() => {
+          this.setNativeInputValue();
+          this.resizeTextarea();
+          this.updateIconOffset();
+        });
       }
     },
 
@@ -294,21 +340,27 @@
 
         this.textareaCalcStyle = calcTextareaHeight(this.$refs.textarea, minRows, maxRows);
       },
+      setNativeInputValue() {
+        const input = this.getInput();
+        if (!input) return;
+        if (input.value === this.nativeInputValue) return;
+        input.value = this.nativeInputValue;
+      },
       handleFocus(event) {
         this.focused = true;
         this.$emit('focus', event);
       },
-      handleComposition(event) {
-        if (event.type === 'compositionstart') {
-          this.isOnComposition = true;
-        }
-        if (event.type === 'compositionend') {
-          this.isOnComposition = false;
-          this.handleInput(event);
-        }
+      handleCompositionStart() {
+        this.isComposing = true;
+      },
+      handleCompositionEnd(event) {
+        this.isComposing = false;
+        this.handleInput(event);
       },
       handleInput(event) {
-        if (this.isOnComposition) return;
+        // should not emit input during composition
+        // see: https://github.com/ElemeFE/element/issues/10516
+        if (this.isComposing) return;
 
         // hack for https://github.com/ElemeFE/element/issues/8548
         // should remove the following line when we don't support IE
@@ -316,12 +368,9 @@
 
         this.$emit('input', event.target.value);
 
-        // set input's value, in case parent refuses the change
+        // ensure native input value is controlled
         // see: https://github.com/ElemeFE/element/issues/12850
-        this.$nextTick(() => {
-          let input = this.getInput();
-          input.value = this.value;
-        });
+        this.$nextTick(this.setNativeInputValue);
       },
       handleChange(event) {
         this.$emit('change', event.target.value);
@@ -364,6 +413,14 @@
       },
       getInput() {
         return this.$refs.input || this.$refs.textarea;
+      },
+      getSuffixVisible() {
+        return this.$slots.suffix ||
+          this.suffixIcon ||
+          this.showClear ||
+          this.showPassword ||
+          this.isWordLimitVisible ||
+          (this.validateState && this.needStatusIcon);
       }
     },
 
@@ -372,6 +429,7 @@
     },
 
     mounted() {
+      this.setNativeInputValue();
       this.resizeTextarea();
       this.updateIconOffset();
       this.id = this._uid;

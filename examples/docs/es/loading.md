@@ -66,11 +66,11 @@ Muestra una animación en un contenedor (como en una tabla) mientras se cargan l
 
 Puede personalizar el texto de carga, spinner de carga y color de fondo.
 
-:::demo Agrege el atributo `element-loading-text` al elemento en el que `v-loading` está vinculado, y su valor se mostrará debajo del spinner. Del mismo modo, `element-loading-spinner` y `element-loading-background` son para personalizar el nombre de la clase del spinner y el color de fondo.
+:::demo Agregue el atributo `element-loading-text` al elemento en el que `v-loading` está vinculado, y su valor se mostrará debajo del spinner. Del mismo modo, `element-loading-spinner` y `element-loading-background` son para personalizar el nombre de la clase del spinner y el color de fondo.
 ```html
 <template>
   <el-table
-    v-loading="loading2"
+    v-loading="loading"
     element-loading-text="Loading..."
     element-loading-spinner="el-icon-loading"
     element-loading-background="rgba(0, 0, 0, 0.8)"
@@ -110,7 +110,7 @@ Puede personalizar el texto de carga, spinner de carga y color de fondo.
           name: 'John Smith',
           address: 'No.1518,  Jinshajiang Road, Putuo District'
         }],
-        loading2: true
+        loading: true
       };
     }
   };
@@ -134,7 +134,7 @@ Muestra una animación de pantalla completa mientras se cargan los datos
   </el-button>
   <el-button
     type="primary"
-    @click="openFullScreen2">
+    @click="openFullScreen">
     Como servicio
   </el-button>
 </template>
@@ -153,7 +153,7 @@ Muestra una animación de pantalla completa mientras se cargan los datos
           this.fullscreenLoading = false;
         }, 2000);
       },
-      openFullScreen2() {
+      openFullScreen() {
         const loading = this.$loading({
           lock: true,
           text: 'Loading',

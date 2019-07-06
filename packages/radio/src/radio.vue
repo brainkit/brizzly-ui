@@ -24,6 +24,7 @@
             :style="{'border-color': model === label || model === valueModel? radioActiveColor : radioInactiveColor,
                      'color': model === label || model === valueModel? radioActiveColor : 'transparent'}"></span>
       <input
+        ref="radio"
         class="el-radio__original"
         :value="!(typeof valueModel !== 'undefined') ? label : valueModel"
         type="radio"
@@ -103,6 +104,7 @@
           } else {
             this.$emit('input', val);
           }
+          this.$refs.radio && (this.$refs.radio.checked = this.model === this.label);
         }
       },
       _elFormItemSize() {

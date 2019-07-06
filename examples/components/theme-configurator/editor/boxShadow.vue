@@ -1,7 +1,9 @@
 <template>
   <section class="config" :key="displayName">
     <div class="config-label">
-      {{displayName}} 
+      <el-tooltip :content="displayName">
+        <span>{{displayKeyName}}</span>
+      </el-tooltip>
       <el-button 
         class="plus-button" 
         size="mini" 
@@ -74,6 +76,7 @@
 .plus-button {
   position: absolute;
   left: 90%;
+  margin-top: 4px;
 }
 .colorPicker {
   margin-left: 0;

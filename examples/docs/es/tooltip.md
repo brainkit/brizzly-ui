@@ -99,7 +99,7 @@ Tooltip tiene 9 colocaciones.
 
 ### Tema
 
-Tooltip tiene dos temas: `dark` and `light`.
+Tooltip tiene dos temas: `dark` y `light`.
 
 :::demo Establecer `effect` para modificar el tema, el valor por defecto es `dark`.
 ```html
@@ -116,7 +116,7 @@ Tooltip tiene dos temas: `dark` and `light`.
 
 Despliegue múltiples líneas de texto y establezca su formato.
 
-:::demo Sobre-escribiba el atributo `content` del `el-tooltip` añadiendo un slot llamado `content`.
+:::demo Sobrecriba el atributo `content` del `el-tooltip` añadiendo un slot llamado `content`.
 ```html
 <el-tooltip placement="top">
   <div slot="content">multiple lines<br/>second line</div>
@@ -133,7 +133,7 @@ el atributo `transition` permite personalizar la animación con la que el Toolti
 
 el atributo `disabled` permite deshabilitar `tooltip`. Solo es necesario definirlo como `true`.
 
-De hecho, Tooltip es una extension basada en [Vue-popper](https://github.com/element-component/vue-popper), es posible utilizar cualquier atributo permitido en Vue-popper.
+De hecho, Tooltip es una extensión basada en [Vue-popper](https://github.com/element-component/vue-popper), es posible utilizar cualquier atributo permitido en Vue-popper.
 
 :::demo
 ```html
@@ -142,6 +142,16 @@ De hecho, Tooltip es una extension basada en [Vue-popper](https://github.com/ele
     <el-button @click="disabled = !disabled">click to {{disabled ? 'active' : 'close'}} tooltip function</el-button>
   </el-tooltip>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        disabled: false
+      };
+    }
+  };
+</script>
 
 <style>
   .slide-fade-enter-active {
@@ -157,7 +167,6 @@ De hecho, Tooltip es una extension basada en [Vue-popper](https://github.com/ele
 </style>
 ```
 :::
-
 
 :::tip
 El componente `router-link` no es soportado por Tooltip, favor de usar `vm.$router.push`.
@@ -184,3 +193,4 @@ Es necesario envolver los elementos de forma deshabilitados en un elemento conte
 | popper-class   | nombre de clase personalizada para el popper del Tooltip | string  | —                                        | —                                        |
 | enterable      | si el mouse puede entrar al Tooltip      | Boolean | —                                        | true                                     |
 | hide-after     | tiempo a esperar en milisegundos para esconder el Tooltip | number  | —                                        | 0                                        |
+| tabindex       | [tabindex](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/tabindex) of Tooltip | number   | —                      | 0              |

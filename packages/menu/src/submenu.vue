@@ -185,7 +185,8 @@
         }
 
       },
-      handleMouseenter(event) {
+      handleMouseenter(event, showTimeout = this.showTimeout) {
+
         if (!('ActiveXObject' in window) && event.type === 'focus' && !event.relatedTarget) {
           return;
         }
@@ -201,7 +202,7 @@
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
           this.rootMenu.openMenu(this.index, this.indexPath);
-        }, this.showTimeout);
+        }, showTimeout);
       },
       handleMouseleave() {
         const {rootMenu} = this;
@@ -214,6 +215,9 @@
         this.dispatch('ElSubmenu', 'mouse-leave-child');
         clearTimeout(this.timeout);
         this.timeout = setTimeout(() => {
+          if (this.appendToBody) {
+            this.rootMenu.openedMenus = [];
+          }
           !this.mouseInChild && this.rootMenu.closeMenu(this.index);
         }, this.hideTimeout);
       },
@@ -282,9 +286,9 @@
             ref="menu"
             v-show={opened}
             class={[`el-menu--${mode}`, popperClass]}
-            on-mouseenter={this.handleMouseenter}
+            on-mouseenter={($event) => this.handleMouseenter($event, 100)}
             on-mouseleave={this.handleMouseleave}
-            on-focus={this.handleMouseenter}>
+            on-focus={($event) => this.handleMouseenter($event, 100)}>
             <ul
               role="menu"
               class={['el-menu el-menu--popup', `el-menu--popup-${currentPlacement}`]}
