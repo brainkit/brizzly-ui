@@ -112,21 +112,21 @@
 </template>
 
 <script>
-import Popper from 'element-ui/src/utils/vue-popper';
-import Clickoutside from 'element-ui/src/utils/clickoutside';
-import Emitter from 'element-ui/src/mixins/emitter';
-import Locale from 'element-ui/src/mixins/locale';
-import Migrating from 'element-ui/src/mixins/migrating';
-import ElInput from 'element-ui/packages/input';
-import ElTag from 'element-ui/packages/tag';
-import ElScrollbar from 'element-ui/packages/scrollbar';
-import ElCascaderPanel from 'element-ui/packages/cascader-panel';
-import AriaUtils from 'element-ui/src/utils/aria-utils';
-import { t } from 'element-ui/src/locale';
-import { isEqual, isEmpty, kebabCase } from 'element-ui/src/utils/util';
-import { isUndefined, isFunction } from 'element-ui/src/utils/types';
-import { isDef } from 'element-ui/src/utils/shared';
-import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
+import Popper from 'brizzly-ui/src/utils/vue-popper';
+import Clickoutside from 'brizzly-ui/src/utils/clickoutside';
+import Emitter from 'brizzly-ui/src/mixins/emitter';
+import Locale from 'brizzly-ui/src/mixins/locale';
+import Migrating from 'brizzly-ui/src/mixins/migrating';
+import ElInput from 'brizzly-ui/packages/input';
+import ElTag from 'brizzly-ui/packages/tag';
+import ElScrollbar from 'brizzly-ui/packages/scrollbar';
+import ElCascaderPanel from 'brizzly-ui/packages/cascader-panel';
+import AriaUtils from 'brizzly-ui/src/utils/aria-utils';
+import { t } from 'brizzly-ui/src/locale';
+import { isEqual, isEmpty, kebabCase } from 'brizzly-ui/src/utils/util';
+import { isUndefined, isFunction } from 'brizzly-ui/src/utils/types';
+import { isDef } from 'brizzly-ui/src/utils/shared';
+import { addResizeListener, removeResizeListener } from 'brizzly-ui/src/utils/resize-event';
 import debounce from 'throttle-debounce/debounce';
 
 const { keys: KeyCode } = AriaUtils;

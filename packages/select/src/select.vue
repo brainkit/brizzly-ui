@@ -142,11 +142,11 @@
   import ElTag from 'brizzly-ui/packages/tag';
   import ElScrollbar from 'brizzly-ui/packages/scrollbar';
   import debounce from 'throttle-debounce/debounce';
-  import Clickoutside from 'element-ui/src/utils/clickoutside';
-  import { addResizeListener, removeResizeListener } from 'element-ui/src/utils/resize-event';
-  import { t } from 'element-ui/src/locale';
-  import scrollIntoView from 'element-ui/src/utils/scroll-into-view';
-  import { getValueByPath, valueEquals, isIE, isEdge } from 'element-ui/src/utils/util';
+  import Clickoutside from 'brizzly-ui/src/utils/clickoutside';
+  import { addResizeListener, removeResizeListener } from 'brizzly-ui/src/utils/resize-event';
+  import { t } from 'brizzly-ui/src/locale';
+  import scrollIntoView from 'brizzly-ui/src/utils/scroll-into-view';
+  import { getValueByPath, valueEquals, isIE, isEdge } from 'brizzly-ui/src/utils/util';
   import NavigationMixin from './navigation-mixin';
   import { isKorean } from 'brizzly-ui/src/utils/shared';
 

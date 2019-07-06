@@ -200,9 +200,9 @@
     nextDate,
     extractDateFormat,
     extractTimeFormat
-  } from 'element-ui/src/utils/date-util';
-  import Clickoutside from 'element-ui/src/utils/clickoutside';
-  import Locale from 'element-ui/src/mixins/locale';
+  } from 'brizzly-ui/src/utils/date-util';
+  import Clickoutside from 'brizzly-ui/src/utils/clickoutside';
+  import Locale from 'brizzly-ui/src/mixins/locale';
   import TimePicker from './time';
   import DateTable from '../basic/date-table';
   import ElInput from 'brizzly-ui/packages/input';

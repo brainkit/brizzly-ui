@@ -48,9 +48,9 @@
   import Locale from 'brizzly-ui/src/mixins/locale';
   import Clickoutside from 'brizzly-ui/src/utils/clickoutside';
   import Dropdown from './dropdown';
-  import ElCheckbox from 'element-ui/packages/checkbox';
-  import ElCheckboxGroup from 'element-ui/packages/checkbox-group';
-  import ElScrollbar from 'element-ui/packages/scrollbar';
+  import ElCheckbox from 'brizzly-ui/packages/checkbox';
+  import ElCheckboxGroup from 'brizzly-ui/packages/checkbox-group';
+  import ElScrollbar from 'brizzly-ui/packages/scrollbar';
 
   export default {
     name: 'ElTableFilterPanel',

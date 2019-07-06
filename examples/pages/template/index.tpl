@@ -399,7 +399,7 @@
 </template>
 <script>
   import throttle from 'throttle-debounce/throttle';
-  import { addClass, removeClass } from 'element-ui/src/utils/dom';
+  import { addClass, removeClass } from 'brizzly-ui/src/utils/dom';
   
   export default {
     created() {
